@@ -50,7 +50,7 @@ attention mask is used in training to ensure each r<sub>k</sub> can only attend 
 
 Empirical evaluations on the ImageNet benchmark demonstrate the superiority of VAR over existing image generation methods. 
 
-- **State-of-the-Art Performance:** From Tables [1](#tab1) and [2](#tab2), we can see that VAR achieves state-of-the-art results in terms of FID and IS, surpassing even diffusion transformers, the foundation of leading diffusion systems like Stable Diffusion.  On ImageNet 256×256 benchmark dataset, VAR improves AR baseline by improving Fréchet inception distance (FID) from 18.65 to 1.73 and inception score (IS) from 80.4 to 350.2.
+- **State-of-the-Art Performance:** From Tables [1](#tab1) and [2](#tab2), we can see that VAR achieves state-of-the-art results in terms of FID and IS, surpassing even diffusion transformers, the foundation of leading diffusion systems like Stable Diffusion.  On the ImageNet 256×256 benchmark dataset, VAR improves the AR baseline by improving Fréchet inception distance (FID) from 18.65 to 1.73 and inception score (IS) from 80.4 to 350.2.
 
 <a id="tab1"></a>
 **Table 1**: Generative model family comparison on class-conditional ImageNet 256×256. **↓** and **↑** indicate lower or higher values are better. Metrics include Fréchet inception distance (FID), inception score (IS), precision (Pre), and recall (Rec). Lower FID values and higher IS, Pre, and Rec values are better. `#Para`: number of parameters, `#Step`: number of model runs needed to generate an image, †: taken from MaskGIT [^2]. Wall-clock inference time relative to VAR is reported. d16, d20, d24 and d30 refer to depths 16, 20, 24, and 30. Models with the suffix ''-re'' used rejection sampling. (This table is taken from [^1])
@@ -97,7 +97,7 @@ Empirical evaluations on the ImageNet benchmark demonstrate the superiority of V
 |**VAR**| VAR-d36-s | **2.63** | **303.2** | 1|
 
 
-- **Remarkable Speed:** From Tables [1](#tab1) and [2](#tab2), it is evident that VAR is significantly faster than traditional AR models, reaching speeds comparable to efficient GAN models. It has 20× faster inference speed than that of AR baseline. For VAR, the complexity for generating an image with n × n latent is significantly reduced to O(n<sup>4</sup>).
+- **Remarkable Speed:** From Tables [1](#tab1) and [2](#tab2), it is evident that VAR is significantly faster than traditional AR models, reaching speeds comparable to efficient GAN models. It has a 20× faster inference speed than that of the AR baseline. For VAR, the complexity of generating an image with n × n latent is significantly reduced to O(n<sup>4</sup>).
 - **Scalability:** From Figure [3](#fig3) and [4](#fig4), it can be seen that VAR exhibits clear power-law scaling laws [^17], similar to LLMs, indicating that performance continues to improve as the model size increases. This allows us to directly predict the performance of a
 larger model from smaller ones and guides us for better resource allocation.
 
