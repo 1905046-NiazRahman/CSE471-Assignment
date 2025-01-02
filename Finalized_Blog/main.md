@@ -1,9 +1,10 @@
-# Visual AutoRegressive Modeling (VAR): A New Era for Autoregressive Models in Computer Vision
+# Visual AutoRegressive Modeling (VAR): A New Era for Autoregressive Models to generate images in Computer Vision
 
 The field of computer vision has been revolutionized by advancements in deep learning, particularly in the area of image generation. Generative Adversarial Networks (GANs) and diffusion models have dominated the landscape, demonstrating remarkable capabilities in synthesizing realistic images. However, another contender, **autoregressive (AR) models**, inspired by the success of large language models (LLMs) like GPT, has been steadily emerging. 
 
-While AR models have shown promise in image generation, they have been plagued by limitations that have prevented them from reaching the performance levels of their GAN and diffusion-based counterparts. A paper presented at NeurIPS 2024, "Visual Autoregressive Modeling: Scalable Image Generation via Next-Scale Prediction"[^1], introduces **VAR**, a novel framework that addresses these limitations and unlocks the true potential of AR models in computer vision.
+While AR models have shown promise in image generation, they have been plagued by limitations that have prevented them from reaching the performance levels of their GAN and diffusion-based counterparts. A paper presented at NeurIPS 2024, "Visual Autoregressive Modeling: Scalable Image Generation via Next-Scale Prediction"[^1], introduces **VAR**, a novel framework that addresses these limitations and unlocks the true potential of AR models in computer vision. In [Figure 1](#fig1), comparison of two standard autoregressive modeling (AR) models and Visual AutoRegressive modeling (VAR) model are provided.
 
+<a id="fig1"></a>
 ![Figure 1: Comparison of two standard autoregressive modeling (AR) models and Visual AutoRegressive modeling (VAR) model](1.png)
 
 **Figure 1**: Comparison of two standard autoregressive modeling (AR) models and Visual AutoRegressive modeling (VAR) model:
@@ -11,7 +12,47 @@ While AR models have shown promise in image generation, they have been plagued b
 **(b)** AR applied to images: sequential visual token generation in a raster-scan order, from left to right, top to bottom (e.g., iGPT, VQGAN, Parti).
 **(c)** VAR for images: multi-scale token maps are autoregressively generated from coarse to fine scales (lower to higher resolutions), with parallel token generation within each scale. A multi-scale VQVAE is necessary for VAR to function. (taken from [^1])
 
-**Table 1**: Generative model family comparison on class-conditional ImageNet 256×256. **↓** and **↑** indicate lower or higher values are better. Metrics include Fréchet inception distance (FID), inception score (IS), precision (Pre), and recall (Rec). Lower FID values and higher IS, Pre, Rec values are better. `#Para`: number of parameters, `#Step`: number of model runs needed to generate an image, †: taken from MaskGIT [^2]. Wall-clock inference time relative to VAR is reported. Models with the suffix ''-re'' used rejection sampling. Table taken from [^1].
+##  The Challenges of Traditional AR Models for Images
+
+Traditional AR models, like those used in language processing, operate on the principle of **next-token prediction**. They generate output sequentially, one token (e.g., a word or a pixel) at a time, based on the preceding tokens. However, directly applying this approach to images presents several challenges:
+
+- **Violation of Mathematical Premise:** Images, unlike text, have inherent bidirectional correlations between pixels. Flattening a 2D image into a 1D sequence for AR modeling disrupts these correlations and contradicts the unidirectional dependency assumption of AR models.
+- **Limited Zero-Shot Generalization:** The sequential nature of traditional AR models hinders their ability to perform tasks that require bidirectional reasoning, such as predicting the top part of an image given the bottom part.
+- **Structural Degradation:** Flattening a 2D image into a 1D sequence disrupts the spatial locality of pixels, leading to a loss of structural information.
+- **Inefficiency:** Generating images with traditional AR models involves a quadratic number of decoding steps and a high computational cost, making it slow and resource-intensive.
+
+
+##  VAR: A Paradigm Shift with Next-Scale Prediction
+
+VAR tackles these challenges by redefining the autoregressive process for images. Instead of predicting the next token, VAR predicts the **next scale** of the image. This means that VAR generates the image hierarchically, starting from a coarse representation and progressively adding details until the full-resolution image is produced.
+
+This **next-scale prediction** paradigm is inspired by how humans perceive and create images, focusing on the global structure before refining local details. It is also aligned with the multi-scale designs prevalent in computer vision.
+
+###  How VAR Works
+
+VAR involves two main stages (See [Figure 2](#fig2) for visualization):
+
+1. **Training a Multi-Scale VQVAE:** This stage involves training a multi-scale Vector Quantized Variational Autoencoder (VQVAE) to encode an image into a series of multi-scale token maps. Each token map represents the image at a different resolution, with the final map matching the original resolution.
+2. **Training a VAR Transformer:** A GPT-style transformer is trained to predict the next higher-resolution token map, conditioned on the previously generated maps. This process continues until the full-resolution image is generated.
+
+<a id="fig2"></a>
+![Figure 2: VAR has two separated training stages](2.png)
+
+**Figure 2**: VAR has two separated training stages: 
+**Stage 1:** a multi-scale VQ autoencoder encodes
+an image into K token maps R = (r<sub>1</sub> , r<sub>2</sub> , . . . , r<sub>K</sub> ) and is trained by a compound loss.
+**Stage 2:** a VAR transformer is trained
+via next-scale prediction: it takes ([s], r<sub>1</sub> , r<sub>2</sub>, . . . , r<sub>K−1</sub> ) as input to predict (r<sub>1</sub>, r<sub>2</sub> , r<sub>3</sub> , . . . , r<sub>K</sub> ). The
+attention mask is used in training to ensure each r<sub>k</sub> can only attend to r<sub>≤k</sub> . Standard cross-entropy loss is used. (taken from [^1])
+
+##  Impressive Results and Scaling Laws
+
+Empirical evaluations on the ImageNet benchmark demonstrate the superiority of VAR over existing image generation methods. 
+
+- **State-of-the-Art Performance:** From Tables [1](#tab1) and [2](#tab2), we can see that VAR achieves state-of-the-art results in terms of FID and IS, surpassing even diffusion transformers, the foundation of leading diffusion systems like Stable Diffusion. 
+
+<a id="tab1"></a>
+**Table 1**: Generative model family comparison on class-conditional ImageNet 256×256. **↓** and **↑** indicate lower or higher values are better. Metrics include Fréchet inception distance (FID), inception score (IS), precision (Pre), and recall (Rec). Lower FID values and higher IS, Pre, Rec values are better. `#Para`: number of parameters, `#Step`: number of model runs needed to generate an image, †: taken from MaskGIT [^2]. Wall-clock inference time relative to VAR is reported. d16, d20, d24 and d30 refer to depths 16, 20, 24, and 30. Models with the suffix ''-re'' used rejection sampling. (taken from [^1])
 
 | **Type** | **Model**      | **FID ↓** | **IS ↑** | **Pre ↑** | **Rec ↑** | **#Para** | **#Step** | **Time**  |
 |----------|----------------|-----------|----------|-----------|-----------|-----------|-----------|-----------|
@@ -42,8 +83,8 @@ While AR models have shown promise in image generation, they have been plagued b
 |          | (validation data) | 1.78   | 236.9    | 0.75      | 0.67      | -         | -         | -         |
 
 
-
-**Table 2**: Generative model family comparison on class-conditional ImageNet 512x512. **↓** and **↑** indicate lower or higher values are better. Metrics include Fréchet inception distance (FID), inception score (IS), precision (Pre), and recall (Rec). Lower FID values and higher IS values are better. ''-s'': a single shared AdaLN layer is used due to resource limitation. Table taken from [^1].
+<a id="tab2"></a>
+**Table 2**: Generative model family comparison on class-conditional ImageNet 512x512. **↓** and **↑** indicate lower or higher values are better. Metrics include Fréchet inception distance (FID), inception score (IS), precision (Pre), and recall (Rec). Lower FID values and higher IS values are better. ''-s'': a single shared AdaLN layer is used due to resource limitation. d36 refer to depth 36. (taken from [^1])
 
 |**Type** | **Model** | **FID ↓** | **IS ↑** | **Time** |
 |-|-|-|-|-|
@@ -53,6 +94,51 @@ While AR models have shown promise in image generation, they have been plagued b
 |**Mask.**| MaskGIT [^2]| 7.32| 156.0| 0.5<sup>†</sup>|
 |**AR**| VQGAN [^13]| 26.52| 66.8| 25<sup>†</sup>|
 |**VAR**| VAR-d36-s | **2.63** | **303.2** | 1|
+
+
+- **Remarkable Speed:** From Tables [1](#tab1) and [2](#tab2), it is evident that VAR is significantly faster than traditional AR models, reaching speeds comparable to efficient GAN models.
+- **Data Efficiency:** VAR requires fewer training epochs compared to diffusion models.
+- **Scalability:** From Figure [3](#fig3) and [4](#fig4), it can be seen that VAR exhibits clear power-law scaling laws, similar to LLMs, indicating that performance continues to improve as the model size increases.
+
+<a id="fig3"></a>
+![Figure 3: ](3.png)
+**Figure 3** Scaling laws with VAR transformer size N (in billions) , with equations (in legend) and power-law fits (dashed). Here, L is test loss and Err is token error rate. Axes are all on a logarithmic scale. The Pearson correlation coefficients near −0.998
+signify a strong linear relationship between log(N) vs. log(L) or log(N) vs. log(Err). Small, near-zero exponents α suggest a smooth decline in both L and Err when scaling up VAR transformer:
+**(a)** log(L (last scale)) vs log(N)
+**(b)** log(L (all scale)) vs log(N)
+**(c)** log(Err (last scale))% vs log(N)
+**(d)** log(Err (all scale))% vs log(N) (taken from [^1])
+
+<a id="fig4"></a>
+![Figure 4: ](4.png)
+
+**Figure 4** Scaling model size N and training compute C improves visual fidelity and soundness. They generated 256 × 256 samples from VAR models 4 different sizes (depth 6, 16, 26, 30) and 3 different training stages (20%, 60%, 100% of total training tokens). 9 class labels (from left to right, top to bottom) are: flamingo 130, arctic wolf 270, macaw 88, Siamese cat 284, oscilloscope 688, husky 250, mollymawk 146, volcano 980, and catamaran 484. The same random seed and teacher-forced initial tokens were employed to maintain consistency in the content. Since larger transformers are believed to be able to learn more intricate and fine-grained image distributions, the observed improvements in visual fidelity and soundness are compatible with the scaling laws. (taken from [^1])
+
+
+##  Zero-Shot Generalization: Beyond Image Generation
+
+The benefits of VAR extend beyond image generation that is illustrated in Figure [5](#fig5). It also demonstrates promising zero-shot generalization capabilities in downstream tasks such as:
+
+- **Image In-Painting and Out-Painting:** VAR can successfully fill in missing parts of an image or extend its boundaries.
+- **Class-Conditional Image Editing:** VAR can modify specific regions of an image based on a given class label.
+
+<a id="fig5"></a>
+![Figure 5: ](5.png)
+**Figure 5** Zero-shot evaluation in downstream tasks that includes in-painting, out-painting, and class-conditional editing. The findings demonstrate that VAR does not require further design or fine-tuning to generalize to new downstream tasks. VAR-d30 was tested here. They allowed the model to create tokens just inside the mask and teacher-forced ground truth tokens outside of it for in-and-out-painting. The model was not given any class label information. VAR has demonstrated its generalization potential by achieving satisfactory outcomes on various downstream tasks without requiring changes to the model architecture or tuning parameters. They also tried VAR on the class-conditional image editing task following MaskGIT [^2]. The model was compelled to generate tokens exclusively in the bounding box conditional on some class label, much like in the case of in-painting. It demonstrates that the model can generate realistic content that blends in nicely with the surrounding setting. (taken from [^1])
+
+##  Future Directions and Applications
+
+VAR represents a significant leap forward in the development of AR models for computer vision. It opens up exciting possibilities for future research and applications:
+
+- **Text-Prompt Generation:** Integrating VAR with LLMs can enable text-to-image generation, potentially rivaling or exceeding the capabilities of current diffusion-based models.
+- **Video Generation:** The next-scale prediction paradigm can be extended to video generation, addressing the challenges of temporal consistency and long-term dependencies.
+- **Multi-Modal Understanding:** VAR's ability to model complex visual distributions and its compatibility with LLMs make it a promising candidate for multi-modal learning and understanding, paving the way for more advanced AI systems.
+
+##  Final words
+
+VAR heralds a new era for AR models in computer vision. By addressing the limitations of traditional approaches and demonstrating impressive performance, scalability, and generalization capabilities, VAR has established itself as a powerful tool for image generation and beyond. 
+
+This breakthrough has the potential to reshape the landscape of computer vision, fostering closer integration with the advancements in natural language processing and contributing to the development of truly intelligent multi-modal AI systems. 
 
 ## References
 [^1]: Keyu Tian, Yi Jiang, Zehuan Yuan, BINGYUE PENG, & Liwei Wang (2024). Visual Autoregressive Modeling: Scalable Image Generation via Next-Scale Prediction. In The Thirty-eighth Annual Conference on Neural Information Processing Systems.
@@ -101,7 +187,3 @@ image modeling with improved vqgan. arXiv preprint arXiv:2110.04627, 2021.
 [^15]: D. Lee, C. Kim, S. Kim, M. Cho, and W.-S. Han. Autoregressive image generation using residual
 quantization. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition,
 pages 11523–11532, 2022. 
-
-[^16]:
-
-[^17]:

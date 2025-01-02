@@ -28,14 +28,6 @@ VAR involves two main stages:
 1. **Training a Multi-Scale VQVAE:** This stage involves training a multi-scale Vector Quantized Variational Autoencoder (VQVAE) to encode an image into a series of multi-scale token maps. Each token map represents the image at a different resolution, with the final map matching the original resolution.
 2. **Training a VAR Transformer:** A GPT-style transformer is trained to predict the next higher-resolution token map, conditioned on the previously generated maps. This process continues until the full-resolution image is generated.
 
-##  The Advantages of VAR
-
-VAR offers several advantages over traditional AR models:
-
-- **Respects Mathematical Premise:** By constraining each scale to depend only on its coarser predecessors, VAR adheres to the unidirectional dependency assumption of AR models.
-- **Preserves Spatial Locality:** VAR maintains the spatial structure of the image by generating token maps in parallel and preserving the relationships between neighboring tokens.
-- **Improved Efficiency:** VAR significantly reduces the computational complexity and inference time compared to traditional AR models, making it faster and more efficient.
-
 ##  Impressive Results and Scaling Laws
 
 Empirical evaluations on the ImageNet benchmark demonstrate the superiority of VAR over existing image generation methods. 
