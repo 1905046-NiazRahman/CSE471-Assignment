@@ -12,7 +12,7 @@ While AR models have shown promise in image generation, they have been plagued b
 **(b)** AR applied to images: sequential visual token generation in a raster-scan order, from left to right, top to bottom (e.g., iGPT, VQGAN, Parti).
 **(c)** VAR for images: multi-scale token maps are autoregressively generated from coarse to fine scales (lower to higher resolutions), with parallel token generation within each scale. A multi-scale VQVAE [^16] is necessary for VAR to function. (This figure is taken from [^1])
 
-##  The Limitations of Traditional AR Models for Images
+## The Limitations of Traditional AR Models for Images
 
 Like those used in language processing, traditional AR models operate on the principle of **next-token prediction**. Based on the preceding tokens, they generate output sequentially, one token (e.g., a word or a pixel) at a time. However, directly applying this approach to images presents several challenges:
 
@@ -23,13 +23,13 @@ Like those used in language processing, traditional AR models operate on the pri
 self-attention transformer needs O(n<sup>2</sup>) autoregressive steps and O(n<sup>6</sup>) computational cost [^1]).
 
 
-##  VAR: A Paradigm Shift with Next-Scale Prediction
+## VAR: A Paradigm Shift with Next-Scale Prediction
 
 VAR tackles these challenges by redefining the autoregressive process for images. Instead of predicting the next token, VAR predicts the **next scale** of the image (as illustrated in Figures [1](#fig1) and [2](#fig2)). This means that VAR generates the image hierarchically, starting from a coarse representation and progressively adding details until the full-resolution image is produced.
 
 This **next-scale prediction** paradigm is inspired by how humans perceive images, focusing on the global structure before refining local details and how humans sketch outlines before filling in details. It is also aligned with the multi-scale designs prevalent in computer vision.
 
-###  How VAR Works
+## How VAR Works
 
 VAR involves two main stages (See Figure [2](#fig2) for visualization):
 
@@ -46,7 +46,7 @@ an image into K token maps R = (r<sub>1</sub>, r<sub>2</sub>, . . . , r<sub>K</s
 via next-scale prediction: it takes ([s], r<sub>1</sub>, r<sub>2</sub>, . . . , r<sub>K−1</sub> ) as input to predict (r<sub>1</sub>, r<sub>2</sub>, r<sub>3</sub>, . . . , r<sub>K</sub> ). The
 attention mask is used in training to ensure each r<sub>k</sub> can only attend to r<sub>≤k</sub> . Standard cross-entropy loss is used. (This figure is taken from [^1])
 
-##  Impressive Results and Scaling Laws
+## Impressive Results and Scaling Laws
 
 Empirical evaluations on the ImageNet benchmark demonstrate the superiority of VAR over existing image generation methods. 
 
@@ -117,7 +117,7 @@ signify a strong linear relationship between log(N) vs. log(L) or log(N) vs. log
 **Figure 4**: Scaling model size N and training compute C improves visual fidelity and soundness. 256 × 256 samples were generated from VAR models 4 different sizes (depth 6, 16, 26, 30) and 3 different training stages (20%, 60%, and 100% of total training tokens). 9 class labels (from left to right, top to bottom) are: flamingo 130, arctic wolf 270, macaw 88, Siamese cat 284, oscilloscope 688, husky 250, mollymawk 146, volcano 980, and catamaran 484. The same random seed and teacher-forced initial tokens were employed to maintain consistency in the content. Since larger transformers are believed to be able to learn more intricate and fine-grained image distributions, the observed improvements in visual fidelity and soundness are compatible with the scaling laws. (This figure is taken from [^1])
 
 
-##  Zero-Shot Generalization: Beyond Image Generation
+## Zero-Shot Generalization: Beyond Image Generation
 
 The benefits of VAR extend beyond image generation as illustrated in Figure [5](#fig5). It also demonstrates promising zero-shot generalization capabilities in downstream tasks such as:
 
@@ -129,7 +129,7 @@ The benefits of VAR extend beyond image generation as illustrated in Figure [5](
 
 **Figure 5**: Zero-shot evaluation in downstream tasks that includes in-painting, out-painting, and class-conditional editing. The findings demonstrate that VAR does not require further design or fine-tuning to generalize to new downstream tasks. VAR-d30 was tested here. The model was allowed to create tokens just inside the mask and teacher-forced ground truth tokens outside of it for in-and-out painting. The model was not given any class label information. VAR has demonstrated its generalization potential by achieving satisfactory outcomes on various downstream tasks without requiring changes to the model architecture or tuning parameters. The authors of [^1] also tried VAR on the class-conditional image editing task following MaskGIT [^2]. The model was compelled to generate tokens exclusively in the bounding box conditional on some class label, much like in the case of in-painting. It demonstrates that the model can generate realistic content that blends in nicely with the surrounding setting. (This figure is taken from [^1])
 
-##  Future Directions and Applications
+## Future Directions and Applications
 
 VAR represents a significant leap forward in the development of AR models for computer vision. It opens up exciting possibilities for future research and applications:
 
@@ -137,7 +137,7 @@ VAR represents a significant leap forward in the development of AR models for co
 - **Text-Prompt Generation:** Integrating VAR with LLMs can enable text-to-image generation, potentially rivaling or exceeding the capabilities of current diffusion-based models.
 - **Video Generation:** The next-scale prediction paradigm can be extended to video generation, addressing the challenges of temporal consistency and long-term dependencies.
 
-##  Final words
+## Final words
 
 VAR heralds a new era for AR models in computer vision. By addressing the limitations of traditional approaches and demonstrating impressive performance, scalability, and generalization capabilities, VAR has established itself as a powerful tool for image generation and beyond. 
 
