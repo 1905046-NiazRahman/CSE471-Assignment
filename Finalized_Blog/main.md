@@ -102,6 +102,7 @@ Empirical evaluations on the ImageNet benchmark demonstrate the superiority of V
 
 <a id="fig3"></a>
 ![Figure 3: ](3.png)
+
 **Figure 3** Scaling laws with VAR transformer size N (in billions), with equations (in legend) and power-law fits (dashed). Here, L is test loss and Err is token error rate. Axes are all on a logarithmic scale. The Pearson correlation coefficients near −0.998
 signify a strong linear relationship between log(N) vs. log(L) or log(N) vs. log(Err). Small, near-zero exponents α suggest a smooth decline in both L and Err when scaling up the VAR transformer:
 **(a)** log(L (last scale)) vs log(N)
@@ -124,6 +125,7 @@ The benefits of VAR extend beyond image generation as illustrated in Figure [5](
 
 <a id="fig5"></a>
 ![Figure 5: ](5.png)
+
 **Figure 5** Zero-shot evaluation in downstream tasks that includes in-painting, out-painting, and class-conditional editing. The findings demonstrate that VAR does not require further design or fine-tuning to generalize to new downstream tasks. VAR-d30 was tested here. They allowed the model to create tokens just inside the mask and teacher-forced ground truth tokens outside of it for in-and-out painting. The model was not given any class label information. VAR has demonstrated its generalization potential by achieving satisfactory outcomes on various downstream tasks without requiring changes to the model architecture or tuning parameters. They also tried VAR on the class-conditional image editing task following MaskGIT [^2]. The model was compelled to generate tokens exclusively in the bounding box conditional on some class label, much like in the case of in-painting. It demonstrates that the model can generate realistic content that blends in nicely with the surrounding setting. (This figure is taken from [^1])
 
 ##  Future Directions and Applications
