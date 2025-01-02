@@ -10,7 +10,7 @@ While AR models have shown promise in image generation, they have been plagued b
 **Figure 1**: Comparison of two standard autoregressive modeling (AR) models and Visual AutoRegressive modeling (VAR) model:
 **(a)** AR applied to language: sequential text token generation from left to right, word by word (e.g., GPT, LaMDA, PaLM).
 **(b)** AR applied to images: sequential visual token generation in a raster-scan order, from left to right, top to bottom (e.g., iGPT, VQGAN, Parti).
-**(c)** VAR for images: multi-scale token maps are autoregressively generated from coarse to fine scales (lower to higher resolutions), with parallel token generation within each scale. A multi-scale VQVAE is necessary for VAR to function. (taken from [^1])
+**(c)** VAR for images: multi-scale token maps are autoregressively generated from coarse to fine scales (lower to higher resolutions), with parallel token generation within each scale. A multi-scale VQVAE is necessary for VAR to function. (This figure is taken from [^1])
 
 ##  The Challenges of Traditional AR Models for Images
 
@@ -30,7 +30,7 @@ This **next-scale prediction** paradigm is inspired by how humans perceive and c
 
 ###  How VAR Works
 
-VAR involves two main stages (See [Figure 2](#fig2) for visualization):
+VAR involves two main stages (See Figure [2](#fig2) for visualization):
 
 1. **Training a Multi-Scale VQVAE:** This stage involves training a multi-scale Vector Quantized Variational Autoencoder (VQVAE) to encode an image into a series of multi-scale token maps. Each token map represents the image at a different resolution, with the final map matching the original resolution.
 2. **Training a VAR Transformer:** A GPT-style transformer is trained to predict the next higher-resolution token map, conditioned on the previously generated maps. This process continues until the full-resolution image is generated.
@@ -43,7 +43,7 @@ VAR involves two main stages (See [Figure 2](#fig2) for visualization):
 an image into K token maps R = (r<sub>1</sub> , r<sub>2</sub> , . . . , r<sub>K</sub> ) and is trained by a compound loss.
 **Stage 2:** a VAR transformer is trained
 via next-scale prediction: it takes ([s], r<sub>1</sub> , r<sub>2</sub>, . . . , r<sub>K−1</sub> ) as input to predict (r<sub>1</sub>, r<sub>2</sub> , r<sub>3</sub> , . . . , r<sub>K</sub> ). The
-attention mask is used in training to ensure each r<sub>k</sub> can only attend to r<sub>≤k</sub> . Standard cross-entropy loss is used. (taken from [^1])
+attention mask is used in training to ensure each r<sub>k</sub> can only attend to r<sub>≤k</sub> . Standard cross-entropy loss is used. (This figure is taken from [^1])
 
 ##  Impressive Results and Scaling Laws
 
@@ -52,7 +52,7 @@ Empirical evaluations on the ImageNet benchmark demonstrate the superiority of V
 - **State-of-the-Art Performance:** From Tables [1](#tab1) and [2](#tab2), we can see that VAR achieves state-of-the-art results in terms of FID and IS, surpassing even diffusion transformers, the foundation of leading diffusion systems like Stable Diffusion. 
 
 <a id="tab1"></a>
-**Table 1**: Generative model family comparison on class-conditional ImageNet 256×256. **↓** and **↑** indicate lower or higher values are better. Metrics include Fréchet inception distance (FID), inception score (IS), precision (Pre), and recall (Rec). Lower FID values and higher IS, Pre, Rec values are better. `#Para`: number of parameters, `#Step`: number of model runs needed to generate an image, †: taken from MaskGIT [^2]. Wall-clock inference time relative to VAR is reported. d16, d20, d24 and d30 refer to depths 16, 20, 24, and 30. Models with the suffix ''-re'' used rejection sampling. (taken from [^1])
+**Table 1**: Generative model family comparison on class-conditional ImageNet 256×256. **↓** and **↑** indicate lower or higher values are better. Metrics include Fréchet inception distance (FID), inception score (IS), precision (Pre), and recall (Rec). Lower FID values and higher IS, Pre, Rec values are better. `#Para`: number of parameters, `#Step`: number of model runs needed to generate an image, †: taken from MaskGIT [^2]. Wall-clock inference time relative to VAR is reported. d16, d20, d24 and d30 refer to depths 16, 20, 24, and 30. Models with the suffix ''-re'' used rejection sampling. (This table is taken from [^1])
 
 | **Type** | **Model**      | **FID ↓** | **IS ↑** | **Pre ↑** | **Rec ↑** | **#Para** | **#Step** | **Time**  |
 |----------|----------------|-----------|----------|-----------|-----------|-----------|-----------|-----------|
@@ -84,7 +84,7 @@ Empirical evaluations on the ImageNet benchmark demonstrate the superiority of V
 
 
 <a id="tab2"></a>
-**Table 2**: Generative model family comparison on class-conditional ImageNet 512x512. **↓** and **↑** indicate lower or higher values are better. Metrics include Fréchet inception distance (FID), inception score (IS), precision (Pre), and recall (Rec). Lower FID values and higher IS values are better. ''-s'': a single shared AdaLN layer is used due to resource limitation. d36 refer to depth 36. (taken from [^1])
+**Table 2**: Generative model family comparison on class-conditional ImageNet 512x512. **↓** and **↑** indicate lower or higher values are better. Metrics include Fréchet inception distance (FID), inception score (IS), precision (Pre), and recall (Rec). Lower FID values and higher IS values are better. ''-s'': a single shared AdaLN layer is used due to resource limitation. d36 refer to depth 36. (This table is taken from [^1])
 
 |**Type** | **Model** | **FID ↓** | **IS ↑** | **Time** |
 |-|-|-|-|-|
@@ -107,12 +107,12 @@ signify a strong linear relationship between log(N) vs. log(L) or log(N) vs. log
 **(a)** log(L (last scale)) vs log(N)
 **(b)** log(L (all scale)) vs log(N)
 **(c)** log(Err (last scale))% vs log(N)
-**(d)** log(Err (all scale))% vs log(N) (taken from [^1])
+**(d)** log(Err (all scale))% vs log(N) (This figure is taken from [^1])
 
 <a id="fig4"></a>
 ![Figure 4: ](4.png)
 
-**Figure 4** Scaling model size N and training compute C improves visual fidelity and soundness. They generated 256 × 256 samples from VAR models 4 different sizes (depth 6, 16, 26, 30) and 3 different training stages (20%, 60%, 100% of total training tokens). 9 class labels (from left to right, top to bottom) are: flamingo 130, arctic wolf 270, macaw 88, Siamese cat 284, oscilloscope 688, husky 250, mollymawk 146, volcano 980, and catamaran 484. The same random seed and teacher-forced initial tokens were employed to maintain consistency in the content. Since larger transformers are believed to be able to learn more intricate and fine-grained image distributions, the observed improvements in visual fidelity and soundness are compatible with the scaling laws. (taken from [^1])
+**Figure 4** Scaling model size N and training compute C improves visual fidelity and soundness. They generated 256 × 256 samples from VAR models 4 different sizes (depth 6, 16, 26, 30) and 3 different training stages (20%, 60%, 100% of total training tokens). 9 class labels (from left to right, top to bottom) are: flamingo 130, arctic wolf 270, macaw 88, Siamese cat 284, oscilloscope 688, husky 250, mollymawk 146, volcano 980, and catamaran 484. The same random seed and teacher-forced initial tokens were employed to maintain consistency in the content. Since larger transformers are believed to be able to learn more intricate and fine-grained image distributions, the observed improvements in visual fidelity and soundness are compatible with the scaling laws. (This figure is taken from [^1])
 
 
 ##  Zero-Shot Generalization: Beyond Image Generation
@@ -124,7 +124,7 @@ The benefits of VAR extend beyond image generation that is illustrated in Figure
 
 <a id="fig5"></a>
 ![Figure 5: ](5.png)
-**Figure 5** Zero-shot evaluation in downstream tasks that includes in-painting, out-painting, and class-conditional editing. The findings demonstrate that VAR does not require further design or fine-tuning to generalize to new downstream tasks. VAR-d30 was tested here. They allowed the model to create tokens just inside the mask and teacher-forced ground truth tokens outside of it for in-and-out-painting. The model was not given any class label information. VAR has demonstrated its generalization potential by achieving satisfactory outcomes on various downstream tasks without requiring changes to the model architecture or tuning parameters. They also tried VAR on the class-conditional image editing task following MaskGIT [^2]. The model was compelled to generate tokens exclusively in the bounding box conditional on some class label, much like in the case of in-painting. It demonstrates that the model can generate realistic content that blends in nicely with the surrounding setting. (taken from [^1])
+**Figure 5** Zero-shot evaluation in downstream tasks that includes in-painting, out-painting, and class-conditional editing. The findings demonstrate that VAR does not require further design or fine-tuning to generalize to new downstream tasks. VAR-d30 was tested here. They allowed the model to create tokens just inside the mask and teacher-forced ground truth tokens outside of it for in-and-out-painting. The model was not given any class label information. VAR has demonstrated its generalization potential by achieving satisfactory outcomes on various downstream tasks without requiring changes to the model architecture or tuning parameters. They also tried VAR on the class-conditional image editing task following MaskGIT [^2]. The model was compelled to generate tokens exclusively in the bounding box conditional on some class label, much like in the case of in-painting. It demonstrates that the model can generate realistic content that blends in nicely with the surrounding setting. (This figure is taken from [^1])
 
 ##  Future Directions and Applications
 
