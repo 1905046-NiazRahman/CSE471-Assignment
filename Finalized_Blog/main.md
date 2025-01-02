@@ -12,14 +12,15 @@ While AR models have shown promise in image generation, they have been plagued b
 **(b)** AR applied to images: sequential visual token generation in a raster-scan order, from left to right, top to bottom (e.g., iGPT, VQGAN, Parti).
 **(c)** VAR for images: multi-scale token maps are autoregressively generated from coarse to fine scales (lower to higher resolutions), with parallel token generation within each scale. A multi-scale VQVAE is necessary for VAR to function. (This figure is taken from [^1])
 
-##  The Challenges of Traditional AR Models for Images
+##  The Limitations of Traditional AR Models for Images
 
 Like those used in language processing, traditional AR models operate on the principle of **next-token prediction**. Based on the preceding tokens, they generate output sequentially, one token (e.g., a word or a pixel) at a time. However, directly applying this approach to images presents several challenges:
 
 - **Violation of Mathematical Premise:** Images, unlike text, have inherent bidirectional correlations between pixels. Flattening a 2D image into a 1D sequence for AR modeling disrupts these correlations and contradicts the unidirectional dependency assumption of AR models.
 - **Limited Zero-Shot Generalization:** Traditional AR models' sequential nature hinders their ability to perform tasks that require bidirectional reasoning, such as predicting the top part of an image given the bottom part.
-- **Structural Degradation:** Flattening a 2D image into a 1D sequence disrupts the spatial locality of pixels, leading to a loss of structural information.
-- **Inefficiency:** Generating images with traditional AR models involves a quadratic number of decoding steps and a high computational cost, making it slow and resource-intensive.
+- **Structural Degradation:** Flattening a 2D image into a 1D sequence disrupts the spatial locality of pixels, leading to a loss of  spatial correlations.
+- **Inefficiency:** Generating images with traditional AR models involves a quadratic number of decoding steps and a high computational cost, making it slow and resource-intensive (with a conventional
+self-attention transformer needs O(n<sup>2</sup>) autoregressive steps and O(n<sup>6</sup>) computational cost.).
 
 
 ##  VAR: A Paradigm Shift with Next-Scale Prediction
