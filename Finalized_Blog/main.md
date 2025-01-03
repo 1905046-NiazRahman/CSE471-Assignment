@@ -1,9 +1,6 @@
 # Visual AutoRegressive Modeling (VAR): A New Era for Autoregressive Models to Generate Images in Computer Vision
+*By Sidratul Muntaha Khan (1905009) | Md Muhaiminul Islam Nafi (1905010) | Niaz Rahman (1905046)*  
 
-### About the Authors
-- **Sidratul Muntaha Khan** (1905009)
-- **Muhaiminul Islam Nafi** (1905010)
-- **Niaz Rahman** (1905046)
 
 The field of computer vision has been revolutionized by advancements in deep learning, particularly in the area of image generation. Generative Adversarial Networks (GANs) and diffusion models have dominated the landscape, demonstrating remarkable capabilities in synthesizing realistic images. However, another contender, **autoregressive (AR) models**, inspired by the success of large language models (LLMs) like GPT, has been steadily emerging. 
 
