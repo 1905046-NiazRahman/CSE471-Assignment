@@ -1,5 +1,10 @@
 # Visual AutoRegressive Modeling (VAR): A New Era for Autoregressive Models to Generate Images in Computer Vision
 
+### About the Authors
+- **Sidratul Muntaha Khan** (1905009)
+- **Muhaiminul Islam Nafi** (1905010)
+- **Niaz Rahman** (1905046)
+
 The field of computer vision has been revolutionized by advancements in deep learning, particularly in the area of image generation. Generative Adversarial Networks (GANs) and diffusion models have dominated the landscape, demonstrating remarkable capabilities in synthesizing realistic images. However, another contender, **autoregressive (AR) models**, inspired by the success of large language models (LLMs) like GPT, has been steadily emerging. 
 
 While AR models have shown promise in image generation, they have been plagued by limitations that have prevented them from reaching the performance levels of their GAN and diffusion-based counterparts. A paper presented at [NeurIPS 2024](https://openreview.net/group?id=NeurIPS.cc/2024/Conference#tab-accept-oral), "Visual Autoregressive Modeling: Scalable Image Generation via Next-Scale Prediction"[^1], introduces **VAR**, a novel framework that addresses these limitations and unlocks the true potential of AR models in computer vision. In [Figure 1](#fig1), a comparison of two standard autoregressive modeling (AR) models and Visual AutoRegressive modeling (VAR) model are provided.
