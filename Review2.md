@@ -17,5 +17,5 @@ The blog post provides a good overview of the research paper [Are Language Model
 - There are three methods used in the paper that use LLMs for time series forecasting: OneFitsAll, Time-LLM and CALF. The names are present in the 3rd figure, also these are some key experimental topics, but any mention of these is not present in the blog.
 
 ## Minor Issues
-- The first diagram in the blog is also taken from the mentioned [presentation] (https://www.youtube.com/watch?v=_7v5ICY0L_c)in the blog. And the diagram is not present in the paper, which can be misleading and so needs to be mentioned. 
+- The first diagram in the blog is also taken from the mentioned [presentation](https://www.youtube.com/watch?v=_7v5ICY0L_c) in the blog. And the diagram is not present in the paper, which can be misleading and so needs to be mentioned. 
 - There is a typo in the sentence: 'The architectural variations and their results as found and depicted by the authors of the paper clearly indicates...' where 'indicates' should be 'indicate'.
