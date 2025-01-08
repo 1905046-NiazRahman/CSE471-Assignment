@@ -22,3 +22,4 @@ The blog post provides a good overview of the research paper [Are Language Model
 ### Minor Issues
 - The first diagram in the blog is also taken from the mentioned [presentation](https://www.youtube.com/watch?v=_7v5ICY0L_c) in the blog. And the diagram is not present in the paper, which can be misleading and so needs to be mentioned. 
 - There is a typo in the sentence: 'The architectural variations and their results as found and depicted by the authors of the paper clearly indicates...' where 'indicates' should be 'indicate'.
+- If the methodology section was stated before the key findings section, it would be quite better for the readers to understand the flow and contexts clearly.
