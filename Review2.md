@@ -8,7 +8,8 @@ The blog post provides a good overview of the research paper [Are Language Model
 
 ## Strengths
 - The motivation of the paper is stated in a very clear and interesting way in the blog. 
-- The blog also states important sections and subsections of the paper nicely, which gives a clear overview of the whole paper. 
+- The blog also states important sections and subsections of the paper nicely, which gives a clear overview of the whole paper.
+- The writings are quite standard and fun to read.
 
 ## Weaknesses
 ### Major Issues
