@@ -15,6 +15,7 @@ The blog post provides a good overview of the research paper [Are Language Model
 - In the Evaluation Metrics section of the blog, it is stated that Mean Absolute Error (MAE) and Root Mean Square Error (RMSE) were used in the paper, but actually RMSE is not used; rather Mean Squared Error (MSE) is used in the paper.
 - In the 3rd point of methodology, it is mentioned that the researchers evaluated “Forecasting”, “Classification” and  “Reasoning” in the paper. But actually the forecasting is only evaluated in the paper, and the other two are not evaluated, which is stated as a limitation in the Appendix A of the paper.
 - There are three methods used in the paper that use LLMs for time series forecasting: OneFitsAll, Time-LLM and CALF. The names are present in the 3rd figure, also these are some key experimental topics, but any mention of these is not present in the blog.
+- The blog clearly depicts that LLMs are not useful to forecast time series. But it doesn't state the reasoning about where the performance is coming from if LLM is not present. This is stated in the 4.6 section of the main paper and is a very essential topic to understand the underlying theory of time series forecasting.
 
 ## Minor Issues
 - The first diagram in the blog is also taken from the mentioned [presentation](https://www.youtube.com/watch?v=_7v5ICY0L_c) in the blog. And the diagram is not present in the paper, which can be misleading and so needs to be mentioned. 
