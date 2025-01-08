@@ -1,13 +1,12 @@
 # Visual AutoRegressive Modeling (VAR): A New Era for Autoregressive Models to Generate Images in Computer Vision
-*By Sidratul Muntaha Khan (1905009) | Md Muhaiminul Islam Nafi (1905010) | Niaz Rahman (1905046)*  
-
+>*This blog is written by [1905009 - Sidratul Muntaha Khan](https://github.com/Nahin009) | [1905010 - Md Muhaiminul Islam Nafi](https://github.com/nafiislam) | [1905046 - Niaz Rahman](https://github.com/1905046-NiazRahman) from CSE, BUET*
 
 The field of computer vision has been revolutionized by advancements in deep learning, particularly in the area of image generation. Generative Adversarial Networks (GANs) and diffusion models have dominated the landscape, demonstrating remarkable capabilities in synthesizing realistic images. However, another contender, **autoregressive (AR) models**, inspired by the success of large language models (LLMs) like GPT, has been steadily emerging. 
 
 While AR models have shown promise in image generation, they have been plagued by limitations that have prevented them from reaching the performance levels of their GAN and diffusion-based counterparts. A paper presented at [NeurIPS 2024](https://openreview.net/group?id=NeurIPS.cc/2024/Conference#tab-accept-oral), "Visual Autoregressive Modeling: Scalable Image Generation via Next-Scale Prediction"[^1], introduces **VAR**, a novel framework that addresses these limitations and unlocks the true potential of AR models in computer vision. In [Figure 1](#fig1), a comparison of two standard autoregressive modeling (AR) models and Visual AutoRegressive modeling (VAR) model are provided.
 
 <a id="fig1"></a>
-![Figure 1: Comparison of two standard autoregressive modeling (AR) models and Visual AutoRegressive modeling (VAR) model](1.png)
+![Figure 1: Comparison of two standard autoregressive modeling (AR) models and Visual AutoRegressive modeling (VAR) model](figures/1.png)
 
 **Figure 1**: Comparison of two standard autoregressive modeling (AR) models and Visual AutoRegressive modeling (VAR) model:
 **(a)** AR applied to language: sequential text token generation from left to right, word by word (e.g., GPT, LaMDA, PaLM).
@@ -39,7 +38,7 @@ VAR involves two main stages (See Figure [2](#fig2) for visualization):
 2. **Training a VAR Transformer:** A GPT-style transformer is trained to predict the next higher-resolution token map, conditioned on the previously generated maps. This process continues until the full-resolution image is generated.
 
 <a id="fig2"></a>
-![Figure 2: VAR has two separated training stages](2.png)
+![Figure 2: VAR has two separated training stages](figures/2.png)
 
 **Figure 2**: VAR has two separate training stages: 
 **Stage 1:** a multi-scale VQ autoencoder encodes
@@ -104,7 +103,7 @@ Empirical evaluations on the ImageNet benchmark demonstrate the superiority of V
 larger model from smaller ones and guides us for better resource allocation.
 
 <a id="fig3"></a>
-![Figure 3: ](3.png)
+![Figure 3: ](figures/3.png)
 
 **Figure 3**: Scaling laws with VAR transformer size N (in billions), with equations (in legend) and power-law fits (dashed). Here, L is test loss and Err is token error rate. Axes are all on a logarithmic scale. The Pearson correlation coefficients near −0.998
 signify a strong linear relationship between log(N) vs. log(L) or log(N) vs. log(Err). Small, near-zero exponents α suggest a smooth decline in both L and Err when scaling up the VAR transformer:
@@ -114,7 +113,7 @@ signify a strong linear relationship between log(N) vs. log(L) or log(N) vs. log
 **(d)** log(Err (all scale))% vs log(N) (This figure is taken from [^1])
 
 <a id="fig4"></a>
-![Figure 4: ](4.png)
+![Figure 4: ](figures/4.png)
 
 **Figure 4**: Scaling model size N and training compute C improves visual fidelity and soundness. 256 × 256 samples were generated from VAR models 4 different sizes (depth 6, 16, 26, 30) and 3 different training stages (20%, 60%, and 100% of total training tokens). 9 class labels (from left to right, top to bottom) are: flamingo 130, arctic wolf 270, macaw 88, Siamese cat 284, oscilloscope 688, husky 250, mollymawk 146, volcano 980, and catamaran 484. The same random seed and teacher-forced initial tokens were employed to maintain consistency in the content. Since larger transformers are believed to be able to learn more intricate and fine-grained image distributions, the observed improvements in visual fidelity and soundness are compatible with the scaling laws. (This figure is taken from [^1])
 
@@ -127,7 +126,7 @@ The benefits of VAR extend beyond image generation as illustrated in Figure [5](
 - **Class-Conditional Image Editing:** VAR can modify specific regions of an image based on a given class label.
 
 <a id="fig5"></a>
-![Figure 5: ](5.png)
+![Figure 5: ](figures/5.png)
 
 **Figure 5**: Zero-shot evaluation in downstream tasks that includes in-painting, out-painting, and class-conditional editing. The findings demonstrate that VAR does not require further design or fine-tuning to generalize to new downstream tasks. VAR-d30 was tested here. The model was allowed to create tokens just inside the mask and teacher-forced ground truth tokens outside of it for in-and-out painting. The model was not given any class label information. VAR has demonstrated its generalization potential by achieving satisfactory outcomes on various downstream tasks without requiring changes to the model architecture or tuning parameters. The authors of [^1] also tried VAR on the class-conditional image editing task following MaskGIT [^2]. The model was compelled to generate tokens exclusively in the bounding box conditional on some class label, much like in the case of in-painting. It demonstrates that the model can generate realistic content that blends in nicely with the surrounding setting. (This figure is taken from [^1])
 
