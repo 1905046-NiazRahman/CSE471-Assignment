@@ -6,18 +6,18 @@
 
 The blog post provides a good overview of the Gorilla system described in the research paper [Gorilla: Large Language Model Connected with Massive APIs](https://openreview.net/forum?id=tBRNC6YemY). It was fun to read. The authors explained most of the things in the designated paper. They introduced the model Gorilla and then explained its workings, suitability, and adaptability. Lastly, they depicted their own thoughts. But there were also negative comments that should be raised.
 
-## Strenghts
-1. The blog is well structured and presentation is quite good.
+## Strengths
+1. The blog is well structured and the presentation is quite good.
 
 2. The flow of the blog is understandable and explained properly.
 
-3. The authors have also stated their own take on the importance of Gorilla model that made the blog more impactful.
+3. The authors have also stated their own take on the importance of the Gorilla model which made the blog more impactful.
 
 4. The future directions can be useful in providing future insights.
 
 5. The blog covered most of the things described in the paper
 
-## Weeaknesses
+## Weaknesses
 ### Major Comments
 1.  While the blog post highlights the strengths and potential of Gorilla, it doesn't address its limitations. For instance, the paper acknowledges that the current implementation is limited to machine learning APIs. Including a discussion of limitations would provide a more balanced perspective.
 
@@ -33,7 +33,7 @@ The blog post provides a good overview of the Gorilla system described in the re
 
 2. Grammatical mistakes should have been taken care of. For example, “is to tuned” should be “is to tune”.
 
-3. The figures should have captions that properly describe the things within them.The figures do not have the citations from where it was taken. This should be added.
+3. The figures should have captions that properly describe the things within them. The figures do not have the citations from where it was taken. This should be added.
 
 4. Tables could have been added to make the deductions seem more factual.
 
