@@ -4,7 +4,7 @@
 >*This review of [this blog](https://github.com/farhanitrate35/Blogs/blob/main/Are%20Language%20Models%20Actually%20Useful%20for%20Time%20Series%20Forecasting%3F/Review_Blog.md) is written by [1905009 - Sidratul Muntaha Khan](https://github.com/Nahin009) | [1905010 - Md Muhaiminul Islam Nafi](https://github.com/nafiislam) | [1905046 - Niaz Rahman](https://github.com/1905046-NiazRahman) from CSE, BUET*
 
 
-The blog post provides a good overview of the research paper [Are Language Models Actually Useful for Time Series Forecasting?](https://openreview.net/forum?id=DV15UbHCY1)from NeurIPS 2024, discussing the potential and limitations of large language models (LLMs) like GPT-4 in handling time series forecasting. And the conclusion is that LLMs bring little to no benefit for the task, and are significantly more costly. 
+The blog post provides a good overview of the research paper [Are Language Models Actually Useful for Time Series Forecasting?](https://openreview.net/forum?id=DV15UbHCY1) from NeurIPS 2024, discussing the potential and limitations of large language models (LLMs) like GPT-4 in handling time series forecasting. And the conclusion is that LLMs bring little to no benefit for the task, and are significantly more costly. 
 
 ## Strengths
 - The motivation of the paper is stated in a very clear and interesting way in the blog. 
