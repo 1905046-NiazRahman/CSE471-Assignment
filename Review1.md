@@ -15,7 +15,7 @@ The blog post provides a good overview of the Gorilla system described in the re
 
 4. The future directions can be useful in providing future insights.
 
-5. The blog covered most of the things described in the paper
+5. The blog covered most of the things described in the paper.
 
 ## Weaknesses
 ### Major Comments
@@ -34,7 +34,7 @@ The blog post provides a good overview of the Gorilla system described in the re
 
 3. The figures should have captions that properly describe the things within them. 
 
-4. The figures do not have the citations from where it was taken. This should be added.
+4. The figures do not have the citations from where they were taken. This should be added.
 
 5. Tables could have been added to make the deductions seem more factual.
 
