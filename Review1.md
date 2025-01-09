@@ -4,7 +4,7 @@
 >*This review of [this blog](https://mahirlabibdihan.github.io/CSE-471-ML-Assignment/) is written by [1905009 - Sidratul Muntaha Khan](https://github.com/Nahin009) | [1905010 - Md Muhaiminul Islam Nafi](https://github.com/nafiislam) | [1905046 - Niaz Rahman](https://github.com/1905046-NiazRahman) from CSE, BUET*
 
 
-The blog post provides a good overview of the Gorilla system described in the research paper [Gorilla: Large Language Model Connected with Massive APIs](https://openreview.net/forum?id=tBRNC6YemY). It was fun to read. The authors explained most of the things in the designated paper. They introduced the model Gorilla and then explained its workings, suitability, and adaptability. Lastly, they depicted their own thoughts. But there were also negative comments that should be raised.
+The blog post provides a good overview of the Gorilla system described in the research paper [Gorilla: Large Language Model Connected with Massive APIs](https://openreview.net/forum?id=tBRNC6YemY) from NeurIPS 2024. It was fun to read. The authors explained most of the things in the designated paper. They introduced the model Gorilla and then explained its workings, suitability, and adaptability. In Last, they depicted their own thoughts. But there were also negative comments that should be raised.
 
 ## Strengths
 1. The blog is well structured and the presentation is quite good.
