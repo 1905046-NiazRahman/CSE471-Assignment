@@ -12,7 +12,7 @@ The blog post provides a good overview of the research paper [Are Language Model
 3. The writings are quite standard and fun to read.
 
 ## Weaknesses
-### Major Issues
+### Major Comments
 1. The 3rd figure showing a table about a portion of experimental results is somewhat unclear. It would be great if more description was stated, like the “# Wins” refers to the number of times the method performed best among 26 cases ( 13 datasets each evaluated with MAE and MSE). And “# Params” is the number of model parameters. Also in the figure, red coloring at "# Wins" signifies the best performance, while red at "# Params" suggests the highest computational cost, which is less desirable. Including these clarifications would make the figure easier to understand. Overall, adding captions with proper descriptions to each figure would enhance its understanding better.
   
 2. In the Evaluation Metrics section of the blog, it is stated that Mean Absolute Error (MAE) and Root Mean Square Error (RMSE) were used in the paper, but actually, RMSE is not used; rather Mean Squared Error (MSE) is used in the paper.
@@ -25,7 +25,7 @@ The blog post provides a good overview of the research paper [Are Language Model
 
 6. The blog post mentions that the researchers conducted ablation studies, but it does not provide specifics about the types of ablations performed. The paper describes three specific ablation methods: removing the LLM component, replacing it with an attention layer, and replacing it with a transformer block. The figures in the key contribution section state these terms, but there are no mentions about these ablation methods in the blog. Including these details in the blog post would significantly enhance its informativeness.
 
-### Minor Issues
+### Minor Comments
 1. The first diagram in the blog is also taken from the mentioned [presentation](https://www.youtube.com/watch?v=_7v5ICY0L_c) in the blog. And the diagram is not present in the paper, which can be misleading and so needs to be mentioned.
   
 2. There is a typo in the sentence: 'The architectural variations and their results as found and depicted by the authors of the paper clearly indicates...' where 'indicates' should be 'indicate'.
