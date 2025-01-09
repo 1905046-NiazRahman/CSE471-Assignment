@@ -24,9 +24,9 @@ This review is given on the [blog](https://github.com/farhanitrate35/Blogs/blob/
 1. [Dr. Mohammad Saifur Rahman](https://cse.buet.ac.bd/faculty/faculty_detail/mrahman)\
    Professor\
    Department of Computer Science and Engineering\
-   Bangladesh University of Enginnering And Technology
+   Bangladesh University of Enginnering And Technology.
 
 2. [Sheikh Azizul Hakim](https://cse.buet.ac.bd/faculty/faculty_detail/hakim)\
    Lecturer\
    Department of Computer Science and Engineering\
-   Bangladesh University of Enginnering And Technology
+   Bangladesh University of Enginnering And Technology.
