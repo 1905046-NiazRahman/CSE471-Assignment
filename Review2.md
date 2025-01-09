@@ -8,7 +8,7 @@ The blog post provides a good overview of the research paper [Are Language Model
 
 ## Strengths
 1. The motivation of the paper is stated in a very clear and interesting way in the blog. 
-2. The blog also states important sections and subsections of the paper nicely, which gives a clear overview of the whole paper.
+2. The blog also nicely states important sections and subsections of the paper, giving a clear overview of the whole paper.
 3. The writings are quite standard and fun to read.
 
 ## Weaknesses
@@ -32,6 +32,6 @@ The blog post provides a good overview of the research paper [Are Language Model
   
 3. If the methodology section was stated before the key findings section, it would be quite better for the readers to understand the flow and contexts clearly.
 
-4. There is a confusion in title. The actual title is "Are Language Models Actually Useful for Time Series Forecasting?". But the title is written as "Are Large Language Models Useful for Time Series Forecasting?" in the blog. There is a difference between "Language Models" And "Large Language Models".  This change could lead to confusion regarding the scope of the findings. Though the paper is focused on LLM component, the paper's findings suggest that LLMs may not provide significant advantages over simpler models in time series forecasting. By changing the title, there is a risk of misrepresenting the scope and implications of the research. It may be beneficial to retain the original title to accurately reflect the content and findings of the research.
+4. There is a confusion in the title. The actual title is "Are Language Models Actually Useful for Time Series Forecasting?". But the title is written as "Are Large Language Models Useful for Time Series Forecasting?" in the blog. There is a difference between "Language Models" And "Large Language Models".  This change could lead to confusion regarding the scope of the findings. Though the paper is focused on the LLM component, the paper's findings suggest that LLMs may not provide significant advantages over simpler models in time series forecasting. By changing the title, there is a risk of misrepresenting the scope and implications of the research. It may be beneficial to retain the original title to accurately reflect the content and findings of the research.
 
 By incorporating these improvements, the blog post could become a more comprehensive and insightful resource for readers interested in understanding the paper's findings and the potential role of LLMs in time series analysis.
