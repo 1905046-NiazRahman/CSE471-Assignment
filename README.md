@@ -1,5 +1,5 @@
 # CSE 471 Assignment (January 2024)
-Our task is to write a blog on a [NeurIPS 2024 paper](https://neurips.cc/) and review any two blogs of other groups.
+Our task is to write a blog on a [NeurIPS 2024 paper](https://neurips.cc/) and review any two blogs written by other groups.
 
 ## Team Memebers
 - [1905009 - Sidratul Muntaha Khan](https://github.com/Nahin009) 
