@@ -11,7 +11,7 @@ Undergraduate Students at [Department of Computer Science and Engineering, Bangl
 ## Blog
 The blog is written on the the paper [Visual Autoregressive Modeling: Scalable Image Generation via Next-Scale Prediction](https://openreview.net/forum?id=gojL67CfS8)[[PDF Link]](https://openreview.net/pdf?id=gojL67CfS8) published in NeurIPS 2024. The paper also rewarded as ["Best Paper for Main Track"](https://blog.neurips.cc/2024/12/10/announcing-the-neurips-2024-best-paper-awards/). The blog can be found [here](https://github.com/1905046-NiazRahman/CSE471-Assignment/blob/main/Blog.md).
 
-## Review
+## Reviews
 There are two reviews on two dofferent blogs. They are mentioned below.
 
 ### Review 1
