@@ -9,7 +9,7 @@ Our task is to write a blog on a [NeurIPS 2024 paper](https://neurips.cc/) and r
 Undergraduate Students at [Department of Computer Science and Engineering, Bangladesh University of Enginnering And Technology](https://cse.buet.ac.bd/)
 
 ## Blog
-The blog is written on the the paper [Visual Autoregressive Modeling: Scalable Image Generation via Next-Scale Prediction](https://openreview.net/forum?id=gojL67CfS8)[[PDF Link]](https://openreview.net/pdf?id=gojL67CfS8) published in NeurIPS 2024. The paper also rewarded as ["Best Paper for Main Track"](https://blog.neurips.cc/2024/12/10/announcing-the-neurips-2024-best-paper-awards/). The blog can be found [here](https://github.com/1905046-NiazRahman/CSE471-Assignment/blob/main/Blog.md).
+The blog is written on the the paper [Visual Autoregressive Modeling: Scalable Image Generation via Next-Scale Prediction](https://openreview.net/forum?id=gojL67CfS8) published in NeurIPS 2024.[[PDF]](https://openreview.net/pdf?id=gojL67CfS8) The paper also rewarded as ["Best Paper for Main Track"](https://blog.neurips.cc/2024/12/10/announcing-the-neurips-2024-best-paper-awards/). The blog can be found [here](https://github.com/1905046-NiazRahman/CSE471-Assignment/blob/main/Blog.md).
 
 ## Reviews
 There are two reviews on two dofferent blogs. They are mentioned below.
