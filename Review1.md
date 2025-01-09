@@ -33,8 +33,12 @@ The blog post provides a good overview of the Gorilla system described in the re
 
 2. Grammatical mistakes should have been taken care of. For example, “is to tuned” should be “is to tune”.
 
-3. The figures should have captions that properly describe the things within them. The figures do not have the citations from where it was taken. This should be added.
+3. The figures should have captions that properly describe the things within them. 
 
-4. Tables could have been added to make the deductions seem more factual.
+4. The figures do not have the citations from where it was taken. This should be added.
 
-5. Including snippets of code demonstrating how to use Gorilla would make the blog post more practical and engaging for developers. The paper mentions that Gorilla's code is available. Linking to the code repository or showcasing a simple example would be helpful.
+5. Tables could have been added to make the deductions seem more factual.
+
+6. Including snippets of code demonstrating how to use Gorilla would make the blog post more practical and engaging for developers. The paper mentions that Gorilla's code is available. Linking to the code repository or showcasing a simple example would be helpful.
+
+By addressing these points, the blog post could become a more comprehensive and informative resource for readers interested in Gorilla and the broader field of LLMs interacting with APIs.
